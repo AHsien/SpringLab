@@ -106,4 +106,5 @@ public class Test {
 		Printable printable2 = (Printable) factory.getBean("printable2");
 		printable2.print();
 	}
+
 }
