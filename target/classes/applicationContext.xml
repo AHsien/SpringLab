@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+	<bean id="studentbean" class="com.darren.Student">  
+		<property name="name" value="Darren"></property>  
+	</bean>
+	
+	<!-- Dependency Injection by Constructor -->
+	<bean id="emp" class="com.darren.Employee">
+		<!-- 預設 type 為 string -->
+		<constructor-arg value="10" type="int"></constructor-arg>
+		<constructor-arg value="Darren"></constructor-arg>
+		<constructor-arg>
+			<ref bean="address1"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="address1" class="com.darren.Address">
+		<constructor-arg value="ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	
+	<bean id="question1" class="com.darren.Question1">
+		<constructor-arg value="111" type="int"></constructor-arg>
+		<constructor-arg value="What is java"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>Java is a programming language</value>
+				<value>Java is a Platform</value>
+				<value>Java is an Island of Indonasia</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="question2" class="com.darren.Question2">
+		<constructor-arg value="111" type="int"></constructor-arg>
+		<constructor-arg value="What is java"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="ans1"/>
+				<ref bean="ans2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="ans1" class="com.darren.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Java is a programming language"></constructor-arg>
+		<constructor-arg value="John"></constructor-arg>
+	</bean>
+	
+	<bean id="ans2" class="com.darren.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java is a Platform"></constructor-arg>
+		<constructor-arg value="Ravi"></constructor-arg>
+	</bean>
+	
+	<bean id="question3" class="com.darren.Question3">
+		<constructor-arg value="11"></constructor-arg>
+		<constructor-arg value="What is Java?"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key="Java is a Programming Language" value="Ajay Kumar"></entry>
+				<entry key="Java is a Platform" value="John Smith"></entry>
+				<entry key="Java is an Island" value="Raj Kumar"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="question4" class="com.darren.Question4">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="What is Java?"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key-ref="answer1" value-ref="user1"></entry>
+				<entry key-ref="answer2" value-ref="user2"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="answer1" class="com.darren.Answer2">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Java is a Programming Language"></constructor-arg>
+		<constructor-arg value="12/12/2001"></constructor-arg>
+	</bean>
+	
+	<bean id="answer2" class="com.darren.Answer2">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java is a Platform"></constructor-arg>
+		<constructor-arg value="12/12/2003"></constructor-arg>
+	</bean>
+	
+	<bean id="user1" class="com.darren.User">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Arun Kumar"></constructor-arg>
+		<constructor-arg value="arun@gmail.com"></constructor-arg>
+	</bean>
+	
+	<bean id="user2" class="com.darren.User">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Varun Kumar"></constructor-arg>
+		<constructor-arg value="varun@gmail.com"></constructor-arg>
+	</bean>
+	
+	<bean id="emp1" class="com.darren.Employee">
+		<constructor-arg value="101"></constructor-arg>
+		<constructor-arg value="Sachin"></constructor-arg>
+	</bean>
+	
+	<bean id="address2" class="com.darren.Address2">
+		<constructor-arg value="21,Lohianagar"></constructor-arg>
+		<constructor-arg value="Ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="US"></constructor-arg>
+	</bean>
+	
+	<bean id="emp2" class="com.darren.Employee" parent="emp1">
+		<constructor-arg ref="address2"></constructor-arg>
+	</bean>
+	
+	
+	
+	<!-- Dependency Injection by setter method -->
+	<bean id="emp3" class="com.darren.Employee2">
+		<property name="id">
+			<value>20</value>
+		</property>
+		<property name="name">
+			<value>Arun</value>
+		</property>
+		<property name="city">
+			<value>ghaziabad</value>
+		</property>
+	</bean>
+	
+	<bean id="address3" class="com.darren.Address3">
+		<property name="addressLine1" value="51,Lohianagar"></property>
+		<property name="city" value="Ghaziabad"></property>
+		<property name="state" value="UP"></property>
+		<property name="country" value="India"></property>
+	</bean>
+  
+  <bean id="emp4" class="com.darren.Employee3">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="Sachin Yadav"></property>
+  	<property name="address" ref="address3"></property>
+  </bean>
+  
+  <bean id="question5" class="com.darren.Question5">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="What is Java"></property>
+  	<property name="answers">
+  		<list>
+  			<value>Java is a programming language</value>
+  			<value>Java is a platform</value>
+  			<value>Java is an Island</value>
+  		</list>
+  	</property>
+  </bean>
+  
+  <bean id="answer3" class="com.darren.Answer3">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="Java is a programming language"></property>
+  	<property name="by" value="Ravi Malik"></property>
+  </bean>
+  
+  <bean id="answer4" class="com.darren.Answer3">
+  	<property name="id" value="2"></property>
+  	<property name="name" value="Java is a platform"></property>
+  	<property name="by" value="Sachin"></property>
+  </bean>
+  
+  <bean id="question6" class="com.darren.Question6">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="What is Java?"></property>
+  	<property name="answers">
+  		<list>
+  			<ref bean="answer3"/>
+  			<ref bean="answer4"/>
+  		</list>
+  	</property>
+  </bean>
+  
+  <bean id="question7" class="com.darren.Question7">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="What is Java?"></property>
+  	<property name="answers">
+  		<map>
+  			<entry key="Java is a programming language" value="Sonoo Jaiswal"></entry>
+  			<entry key="Java is a platform" value="Sachin Yadav"></entry>
+  		</map>
+  	</property>
+  </bean>
+  
+  <bean id="answer5" class="com.darren.Answer4">
+  	<property name="id" value="1"></property>
+  	<property name="answer" value="Java is a Programming Language"></property>
+  	<property name="postedDate" value="12/12/2001"></property>
+  </bean>
+  
+  <bean id="answer6" class="com.darren.Answer4">
+  	<property name="id" value="2"></property>
+  	<property name="answer" value="Java is a paltform"></property>
+  	<property name="postedDate" value="12/12/2003"></property>
+  </bean>
+  
+  <bean id="user3" class="com.darren.User2">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="Arun Kumar"></property>
+  	<property name="email" value="arun@gmail.com"></property>
+  </bean>
+  
+  <bean id="user4" class="com.darren.User2">
+  	<property name="id" value="2"></property>
+  	<property name="name" value="Varun Kumar"></property>
+  	<property name="email" value="varun@gmail.com"></property>
+  </bean>
+  
+  <bean id="question8" class="com.darren.Question8">
+  	<property name="id" value="1"></property>
+  	<property name="name" value="What is Java?"></property>
+  	<property name="answers">
+  		<map>
+  			<entry key-ref="answer5" value-ref="user3"></entry>
+  			<entry key-ref="answer6" value-ref="user4"></entry>
+  		</map>
+  	</property>
+  </bean>
+  
+  
+  <!-- byName Mode bean id 須與依賴(A)的 property name (member) 相同 -->
+  <bean id="b1" class="com.darren.B"></bean>
+  <bean id="a" class="com.darren.A" autowire="byName"></bean>
+  
+  <!-- byType Mode 不能在此 xml 檔中存在二個以上 -->
+  <bean id="a1" class="com.darren.A" autowire="byType"></bean>
+  
+  <!-- constructor Mode 會使用參數最多的建構式進行注入 -->
+  <bean id="c" class="com.darren.C"></bean>
+  <bean id="d" class="com.darren.A" autowire="constructor"></bean>
+  
+  
+  <!-- factory method -->
+  <!-- A static factory method that returns instance of its own class -->
+  <bean id="x" class="com.darren.X" factory-method="getX"></bean>
+  
+  <!-- A static factory method that returns instance of another class -->
+  <bean id="printable" class="com.darren.PrintableFactory" factory-method="getPrintable"></bean>
+  
+  <!-- A non-static factory method that returns instance of another class -->
+  <bean id="p2Factory" class="com.darren.PrintableFactory2"></bean>
+  <bean id="printable2" class="com.darren.PrintableFactory2" factory-method="getPrintable" factory-bean="p2Factory"></bean>
+</beans>  
