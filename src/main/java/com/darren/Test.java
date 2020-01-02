@@ -2,6 +2,8 @@ package com.darren;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -18,8 +20,7 @@ public class Test {
 		// ApplicationContext is BeanFactory's sub-interface
 		// must add spring-expression.jar
 		// It uses eager loading, so every bean instantiate after the ApplicationContext is started up.
-		// ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		// Student student = (Student) factory.getBean("studentbean");
 		// student.displayInfo();
@@ -103,8 +104,39 @@ public class Test {
 		// Printable printable = (Printable) factory.getBean("printable");
 		// printable.print();
 
-		Printable printable2 = (Printable) factory.getBean("printable2");
-		printable2.print();
+		// Printable printable2 = (Printable) factory.getBean("printable2");
+		// printable2.print();
+
+		System.out.println("");
+		System.err.println("---- 我是分隔線 -----");
+		System.out.println("");
+
+
+		/**
+		 * AOP
+		 */
+		// 此處需使用 ApplicationContent 獲取 bean，才能自動加載 TrackOperation
+		Operation op = (Operation) ctx.getBean("opBean");
+		System.out.println("calling msg()...");
+		op.msg();
+		System.out.println("calling m()...");
+		op.m();
+		System.out.println("calling k()...");
+		op.k();
+
+		System.out.println("calling validate...");
+
+		try {
+			op.validate(19);
+		} catch (Exception e) {
+			System.out.println("calling validate again...");
+		}
+
+		try {
+			op.validate(11);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 }

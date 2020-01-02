@@ -256,4 +256,11 @@
   <!-- A non-static factory method that returns instance of another class -->
   <bean id="p2Factory" class="com.darren.PrintableFactory2"></bean>
   <bean id="printable2" class="com.darren.PrintableFactory2" factory-method="getPrintable" factory-bean="p2Factory"></bean>
+  
+  
+  <!-- AOP -->
+  <bean id="opBean" class="com.darren.Operation"></bean>
+  <bean id="trackMyBean" class="com.darren.TrackOperation"></bean>
+  
+  <bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"></bean>
 </beans>  
