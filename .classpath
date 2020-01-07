@@ -12,5 +12,8 @@
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-aop-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/aspectjweaver-1.9.5.jar"/>
+	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-jdbc-5.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-dao-2.0.8.jar"/>
+	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/postgresql-42.2.9.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
