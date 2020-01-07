@@ -4,20 +4,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 public class EmployeeDao {
 
 	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate npTemplate;
+
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+	}
+
+	public void setNpTemplate(NamedParameterJdbcTemplate npTemplate) {
+		this.npTemplate = npTemplate;
 	}
 
 	public int saveEmployee(Employee e) {
@@ -82,6 +91,25 @@ public class EmployeeDao {
 				e.setName(rs.getString(2));
 				e.setSalary(rs.getInt(3));
 				return e;
+			}
+
+		});
+	}
+
+	// NamedParameter
+	public void saveByNamedParameter(Employee e) {
+		String query = "insert into employee values (:id,:name,:salary)";
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", e.getId());
+		map.put("name", e.getName());
+		map.put("salary", e.getSalary());
+
+		npTemplate.execute(query, map, new PreparedStatementCallback<Object>() {
+
+			@Override
+			public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+				return ps.executeUpdate();
 			}
 
 		});

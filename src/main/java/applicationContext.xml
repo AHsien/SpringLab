@@ -281,4 +281,13 @@
   	<property name="jdbcTemplate" ref="jdbcTemplate"></property>
   </bean>
   
+  <!-- NamedParameterJdbcTemplate -->
+  <bean id="jtemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+  	<constructor-arg ref="ds"></constructor-arg>
+  </bean>
+  
+  <bean id="nameEmpDao" class="com.darren.jdbc.EmployeeDao">
+  	<property name="npTemplate" ref="jtemplate"></property>
+  </bean>
+  
 </beans>  

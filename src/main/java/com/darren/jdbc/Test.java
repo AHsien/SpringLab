@@ -1,7 +1,5 @@
 package com.darren.jdbc;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -11,7 +9,7 @@ public class Test {
 
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-		EmployeeDao dao = (EmployeeDao) ctx.getBean("edao");
+		// EmployeeDao dao = (EmployeeDao) ctx.getBean("edao");
 
 		// int status = dao.saveEmployee(new Employee(102, "Jack", 35000));
 		// System.out.println(status);
@@ -24,11 +22,15 @@ public class Test {
 		// System.out.println(e);
 		// }
 
-		List<Employee> rowMapperList = dao.getAllEmployeesRowMapper();
+		// List<Employee> rowMapperList = dao.getAllEmployeesRowMapper();
+		//
+		// for (Employee e : rowMapperList) {
+		// System.out.println(e);
+		// }
 
-		for (Employee e : rowMapperList) {
-			System.out.println(e);
-		}
+		EmployeeDao dao = (EmployeeDao) ctx.getBean("nameEmpDao");
+
+		dao.saveByNamedParameter(new Employee(104, "Brad", 50000));
 	}
 
 }

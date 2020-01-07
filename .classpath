@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/com.springsource.org.apache.commons.logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/org.springframework.beans-3.2.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/org.springframework.core-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/org.springframework.context-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-expression-3.2.3.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/aspectjrt-1.8.0.RELEASE.jar"/>
@@ -12,8 +11,9 @@
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-aop-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/aspectjweaver-1.9.5.jar"/>
-	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-jdbc-5.2.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-dao-2.0.8.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/postgresql-42.2.9.jar"/>
+	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-core-4.3.25.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-jdbc-5.2.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
