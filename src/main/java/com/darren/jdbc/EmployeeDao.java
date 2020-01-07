@@ -10,6 +10,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 
 public class EmployeeDao {
 
@@ -35,6 +36,7 @@ public class EmployeeDao {
 		return jdbcTemplate.update(query);
 	}
 
+	// PreparedStatementCallback
 	public Boolean saveEmployeeByPreparedStatement(final Employee e) {
 		String query = "insert into employee values(?,?,?)";
 		return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
@@ -49,6 +51,7 @@ public class EmployeeDao {
 		});
 	}
 
+	// ResultSet
 	public List<Employee> getAllEmployees() {
 		return jdbcTemplate.query("select * from employee", new ResultSetExtractor<List<Employee>>() {
 
@@ -63,6 +66,22 @@ public class EmployeeDao {
 					list.add(e);
 				}
 				return list;
+			}
+
+		});
+	}
+
+	// RowMapper
+	public List<Employee> getAllEmployeesRowMapper() {
+		return jdbcTemplate.query("select * from employee", new RowMapper<Employee>() {
+
+			@Override
+			public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {
+				Employee e = new Employee();
+				e.setId(rs.getInt(1));
+				e.setName(rs.getString(2));
+				e.setSalary(rs.getInt(3));
+				return e;
 			}
 
 		});
