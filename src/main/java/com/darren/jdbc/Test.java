@@ -11,8 +11,11 @@ public class Test {
 
 		EmployeeDao dao = (EmployeeDao) ctx.getBean("edao");
 
-		int status = dao.saveEmployee(new Employee(102, "Amit", 35000));
-		System.out.println(status);
+		// int status = dao.saveEmployee(new Employee(102, "Amit", 35000));
+		// System.out.println(status);
+
+		dao.saveEmployeeByPreparedStatement(new Employee(103, "Amit", 35000));
+
 	}
 
 }
