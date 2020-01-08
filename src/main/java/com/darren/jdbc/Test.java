@@ -28,9 +28,13 @@ public class Test {
 		// System.out.println(e);
 		// }
 
-		EmployeeDao dao = (EmployeeDao) ctx.getBean("nameEmpDao");
+		// EmployeeDao dao = (EmployeeDao) ctx.getBean("nameEmpDao");
+		//
+		// dao.saveByNamedParameter(new Employee(104, "Brad", 50000));
 
-		dao.saveByNamedParameter(new Employee(104, "Brad", 50000));
+		EmployeeDao dao = (EmployeeDao) ctx.getBean("simpleEmpDao");
+
+		dao.updateBySimpleJdbcTemplate(new Employee(104, "Brad", 60000));
 	}
 
 }

@@ -290,4 +290,12 @@
   	<property name="npTemplate" ref="jtemplate"></property>
   </bean>
   
+  <!-- SimpleJdbcTemplate -->
+  <bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+  	<constructor-arg ref="ds"></constructor-arg>
+  </bean>
+  
+  <bean id="simpleEmpDao" class="com.darren.jdbc.EmployeeDao">
+  	<property name="simpleJdbcTemplate" ref="simpleJdbcTemplate"></property>
+  </bean>
 </beans>  

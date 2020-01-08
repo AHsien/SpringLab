@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/postgresql-42.2.9.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-core-4.3.25.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-jdbc-5.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/darren/Downloads/jars/Spring/spring-jdbc-3.2.18.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

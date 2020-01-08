@@ -14,11 +14,15 @@ import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 public class EmployeeDao {
 
 	private JdbcTemplate jdbcTemplate;
+
 	private NamedParameterJdbcTemplate npTemplate;
+
+	private SimpleJdbcTemplate simpleJdbcTemplate;
 
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -28,6 +32,11 @@ public class EmployeeDao {
 	public void setNpTemplate(NamedParameterJdbcTemplate npTemplate) {
 		this.npTemplate = npTemplate;
 	}
+
+	public void setSimpleJdbcTemplate(SimpleJdbcTemplate simpleJdbcTemplate) {
+		this.simpleJdbcTemplate = simpleJdbcTemplate;
+	}
+
 
 	public int saveEmployee(Employee e) {
 		String query = "insert into employee values(" + e.getId() + ", '" + e.getName() + "', '" + e.getSalary() + "')";
@@ -113,5 +122,11 @@ public class EmployeeDao {
 			}
 
 		});
+	}
+
+	// SimpleJdbcTemplate
+	public int updateBySimpleJdbcTemplate(Employee e) {
+		String query = "update employee set salary = ? where id = ?";
+		return simpleJdbcTemplate.update(query, e.getSalary(), e.getId());
 	}
 }
